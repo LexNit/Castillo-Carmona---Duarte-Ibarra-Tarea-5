@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Dogmodel } from 'src/app/Dogmodel';
+import { NavController } from '@ionic/angular';
+import { CameraPage } from '../camera/camera.page';
 
 @Component({
   selector: 'app-folder',
@@ -15,7 +17,7 @@ export class FolderPage implements OnInit {
   facts: any = [];
   private url_facts = 'https://cat-fact.herokuapp.com/facts';
   
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) { }
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private navCtrl: NavController) { }
 
   url:string;
   myApiResponseData: Dogmodel.DogImage;
@@ -52,5 +54,9 @@ export class FolderPage implements OnInit {
       console.log(f);
       this.facts = f;
     });
+  }
+
+  gotocamera(){
+    this.navCtrl.navigateForward('CameraPage');
   }
 }
