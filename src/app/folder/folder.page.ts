@@ -5,6 +5,12 @@ import { Dogmodel } from 'src/app/Dogmodel';
 import { NavController } from '@ionic/angular';
 import { CameraPage } from '../camera/camera.page';
 
+// Para SQLite y su forms
+// import { FormGroup, FormBuilder } from "@angular/forms";
+// import { DbService } from './../services/db.service';
+// import { ToastController } from '@ionic/angular';
+// import { Router } from "@angular/router";
+
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.page.html',
@@ -13,15 +19,21 @@ import { CameraPage } from '../camera/camera.page';
 
 export class FolderPage implements OnInit {
 
+  //Cat's facts, API
   public folder: string;
   facts: any = [];
   private url_facts = 'https://cat-fact.herokuapp.com/facts';
-  
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private navCtrl: NavController) { }
 
+  //Dog Image, API
   url:string;
   myApiResponseData: Dogmodel.DogImage;
   processing:boolean;
+
+  constructor(
+    private activatedRoute: ActivatedRoute, 
+    private http: HttpClient,
+    private navCtrl: NavController,
+    ) { }
 
 
   ngOnInit() {
@@ -29,7 +41,6 @@ export class FolderPage implements OnInit {
     this.url='https://dog.ceo/api/breeds/image/random';
     this.myApiResponseData = <Dogmodel.DogImage>{};
     this.processing=false;
-
   }
 
   callApi()

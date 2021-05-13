@@ -10,11 +10,20 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 //import { CameraPage } from './camera/camera.page';
 
+import { SQLite } from '@ionic-native/sqlite/ngx';
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+
 @NgModule({
   declarations: [AppComponent,], //CameraPage],
   entryComponents: [],//[CameraPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ComponentsModule, HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ 
+    SQLite,
+    SQLitePorter,
+    { 
+      provide: RouteReuseStrategy, 
+      useClass: IonicRouteStrategy 
+    }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
