@@ -35,8 +35,10 @@ export class AddogsPage implements OnInit {
     });
 
     this.mainForm = this.formBuilder.group({
-      artist: [''],
-      song: ['']
+      breed: [''],
+      size: [''],
+      height: [''],
+      origin: ['']
     })
   }
 
@@ -59,6 +61,12 @@ export class AddogsPage implements OnInit {
       });
       toast.present();      
     })
+  }
+
+  getBackButtonText() {
+    const win = window as any;
+    const mode = win && win.Ionic && win.Ionic.mode;
+    return mode === 'ios' ? 'Inbox' : '';
   }
 
 }

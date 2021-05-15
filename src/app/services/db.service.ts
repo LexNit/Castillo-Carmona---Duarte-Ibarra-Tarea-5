@@ -13,7 +13,7 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 
 export class DbService {
   private storage: SQLiteObject;
-  songsList = new BehaviorSubject([]);
+  dogsList = new BehaviorSubject([]);
   private isDbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
@@ -39,12 +39,12 @@ export class DbService {
   }
  
   fetchDogs(): Observable<Dogs[]> {
-    return this.songsList.asObservable();
+    return this.dogsList.asObservable();
   }
 
     // Render fake data
     getFakeData() {
-      this.httpClient.get(
+       this.httpClient.get(
         'assets/dump.sql', 
         {responseType: 'text'}
       ).subscribe(data => {
@@ -59,7 +59,7 @@ export class DbService {
 
   // Get list
   getDogs(){
-    return this.storage.executeSql('SELECT * FROM songtable', []).then(res => {
+    return this.storage.executeSql('SELECT * FROM dogstable', []).then(res => {
       let items: Dogs[] = [];
       if (res.rows.length > 0) {
         for (var i = 0; i < res.rows.length; i++) { 
@@ -72,7 +72,7 @@ export class DbService {
            });
         }
       }
-      this.songsList.next(items);
+      this.dogsList.next(items);
     });
   }
 

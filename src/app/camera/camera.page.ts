@@ -20,4 +20,9 @@ export class CameraPage implements OnInit {
     this.photoService.addNewToGallery();
   }
 
+  getBackButtonText() {
+    const win = window as any;
+    const mode = win && win.Ionic && win.Ionic.mode;
+    return mode === 'ios' ? 'Inbox' : '';
+  }
 }

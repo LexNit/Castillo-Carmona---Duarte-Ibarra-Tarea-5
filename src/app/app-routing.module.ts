@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: 'addogs',
     loadChildren: () => import('./addogs/addogs.module').then( m => m.AddogsPageModule)
-  }
+  },
 ];
 
 @NgModule({
